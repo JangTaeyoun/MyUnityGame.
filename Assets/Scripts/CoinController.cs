@@ -6,6 +6,8 @@ public class CoinController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
+    private StageController stageController;
+    [SerializeField]
     private GameObject coinEffectPrefab;
     private float rotateSpeed = 100.0f;
 
@@ -18,6 +20,8 @@ public class CoinController : MonoBehaviour
     {
         GameObject clone = Instantiate(coinEffectPrefab);
         clone.transform.position = transform.position;
+
+        stageController.GetCoin();
 
         Destroy(gameObject);
     }

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private float minHeight;
     // Start is called before the first frame update
     private Movement3D movement3D;
 
@@ -20,6 +23,16 @@ public class PlayerController : MonoBehaviour
         if (x != 0 || z != 0)
         {
             movement3D.MoveTo(new Vector3(x, 0, z));
+        }
+
+        ChangeSceneFallDown();
+    }
+
+    private void ChangeSceneFallDown()
+    {
+        if ( transform.position.y < minHeight)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
